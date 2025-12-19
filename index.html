@@ -3,30 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frameless Minimalist Grid - Playful Pop</title>
+    <title>Frameless Minimalist Grid - Soft Update</title>
     <style>
         /* --- RESET & SETUP --- */
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
 
-        /* Import Font yang lebih bulat (Optional, kalau mau load font external) */
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
 
         :root {
-            /* --- PALET WARNA BARU: CHEERFUL POP --- */
+            /* --- UPDATE WARNA --- */
             
-            /* Background Kotak: Kuning mentega cerah (bukan pucat) */
-            --bg-card-content: #fff59d; 
+            /* Background Kotak: Kuning yang lebih soft/pucat (sebelumnya #fff59d) */
+            --bg-card-content: #fffde7; 
             
-            /* Warna Utama (Tombol & Harga Diskon): Pink/Merah Berry yang manis */
-            --primary-color: #ff4081; 
+            /* Warna Button Baru */
+            --btn-color: #8bc34a;
+            --btn-shadow-color: #558b2f; /* Hijau tua untuk bayangan tombol */
+
+            /* Warna Harga Baru */
+            --price-color: darkblue;
             
-            /* Warna Border: Kuning Emas agak gelap dikit biar frame-nya tegas */
+            /* Warna Border & Shadow Card (Tetap sama biar tema pop-nya dapet) */
             --border-card: #fbc02d; 
-            
-            /* Warna Bayangan: Oranye pudar biar kerasa 'warm' */
             --shadow-soft: 0 6px 0px rgba(251, 192, 45, 0.4); 
             
-            /* Warna Teks: Coklat tua (lebih soft daripada hitam murni di atas kuning) */
+            /* Warna Teks */
             --text-main: #5d4037;
             --text-secondary: #8d6e63;
         }
@@ -50,7 +51,7 @@
         .product-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr); 
-            gap: 12px; /* Gap diperlebar sedikit biar lega */
+            gap: 12px;
             width: 100%;
         }
 
@@ -59,13 +60,6 @@
                 grid-template-columns: repeat(4, 1fr);
                 gap: 24px;
             }
-        }
-
-        /* --- ANIMASI POP (BOUNCE) --- */
-        @keyframes popBtn {
-            0% { transform: scale(1); }
-            50% { transform: scale(0.95); }
-            100% { transform: scale(1); }
         }
 
         /* --- PRODUCT CARD STRUCTURE --- */
@@ -81,7 +75,7 @@
             position: relative;
             width: 100%;
             padding-top: 100%; 
-            margin-bottom: -20px; /* Overlap lebih banyak ke bawah */
+            margin-bottom: -20px;
             z-index: 2; 
         }
 
@@ -94,20 +88,20 @@
             height: 100%;
             object-fit: contain; 
             filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efek membal saat hover */
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .product-card:hover .card-image {
-            transform: translate(-50%, -50%) scale(1.08) rotate(-2deg); /* Miring dikit biar lucu */
+            transform: translate(-50%, -50%) scale(1.08) rotate(-2deg);
         }
 
         /* --- BAGIAN KONTEN (KOTAK WARNA) --- */
         .card-content {
             background: var(--bg-card-content);
             padding: 24px 12px 14px 12px; 
-            border-radius: 16px; /* Lebih bulat sudutnya */
+            border-radius: 16px;
             
-            /* Flat Shadow Style (Shadow tebal tanpa blur - gaya kartun) */
+            /* Flat Shadow Style */
             box-shadow: 0 4px 0 var(--border-card); 
             border: 2px solid var(--border-card);
             
@@ -125,7 +119,7 @@
         }
 
         .product-name {
-            font-size: 0.9rem; /* Sedikit diperbesar */
+            font-size: 0.9rem;
             font-weight: 700; 
             color: var(--text-main);
             margin-bottom: 8px;
@@ -137,21 +131,25 @@
             overflow: hidden;
         }
 
+        /* --- HARGA (UPDATED LAYOUT) --- */
         .price-container {
-            margin-bottom: 6px;
+            margin-bottom: 8px;
+            display: flex;
+            flex-direction: column; /* Membuat harga tersusun ke bawah */
+            align-items: flex-start;
         }
 
         .original-price {
             font-size: 0.75rem;
             color: var(--text-secondary);
             text-decoration: line-through;
-            margin-right: 5px;
             font-weight: 500;
+            margin-bottom: 2px; /* Jarak sedikit ke harga bawah */
         }
 
         .discount-price {
             font-size: 1rem;
-            color: var(--primary-color);
+            color: var(--price-color); /* Dark Blue */
             font-weight: 800;
         }
 
@@ -161,9 +159,9 @@
             margin-bottom: 12px;
             font-weight: 600;
         }
-        .star { color: #ffa000; } /* Bintang oranye tua */
+        .star { color: #ffa000; }
 
-        /* --- TOMBOL (CANDY BUTTON) --- */
+        /* --- TOMBOL (UPDATED COLOR) --- */
         .btn-minimal {
             display: block;
             width: 100%;
@@ -172,26 +170,27 @@
             text-decoration: none;
             font-size: 0.85rem;
             font-weight: 700;
-            border-radius: 12px; /* Lebih bulat */
+            border-radius: 12px;
             transition: all 0.2s ease;
             
-            background-color: var(--primary-color);
+            /* Warna Hijau Baru */
+            background-color: var(--btn-color); 
             color: white;
             border: none;
             
-            /* Efek tombol timbul */
-            box-shadow: 0 4px 0 #c2185b; /* Shadow gelap dari warna pink */
-            margin-bottom: 4px; /* Space untuk shadow tombol */
+            /* Efek tombol timbul dengan shadow hijau tua */
+            box-shadow: 0 4px 0 var(--btn-shadow-color); 
+            margin-bottom: 4px;
         }
 
         .btn-minimal:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 0 #c2185b;
+            box-shadow: 0 6px 0 var(--btn-shadow-color);
         }
 
         .btn-minimal:active {
-            transform: translateY(4px); /* Efek tombol ditekan */
-            box-shadow: 0 0 0 #c2185b;
+            transform: translateY(4px);
+            box-shadow: 0 0 0 var(--btn-shadow-color);
         }
 
     </style>
@@ -274,4 +273,3 @@
 
 </body>
 </html>
-
