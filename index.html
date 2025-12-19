@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frameless Minimalist Grid - Merged</title>
+    <title>Frameless Minimalist Grid - Playful Kids</title>
     <style>
         /* --- RESET & SETUP --- */
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
 
         :root {
-            --primary-color: #18375d; /* Biru Navy */
-            --bg-card-content: #ffffff;
-            --shadow-soft: 0 4px 15px rgba(0,0,0,0.05);
+            /* WARNA BARU: Lebih cerah untuk anak-anak */
+            --primary-color: #3b82f6; /* Biru Cerah Ceria */
+            --bg-card-content: #fff9e6; /* Kuning Pastel Lembut */
+            --border-card: #fde68a; /* Border Kuning senada */
+            --shadow-soft: 0 4px 15px rgba(253, 230, 138, 0.3);
         }
 
         body {
@@ -19,7 +21,6 @@
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            /* Padding dikurangi agar kotak produk lebih lebar mentok ke samping */
             padding: 10px; 
             height: auto;
             min-height: 100vh;
@@ -34,7 +35,6 @@
         .product-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr); 
-            /* Gap diperkecil jadi 8px agar kotak produk lebih lebar lagi */
             gap: 8px; 
             width: 100%;
         }
@@ -60,18 +60,17 @@
         .product-card {
             display: flex;
             flex-direction: column;
-            /* HAPUS background & border di container utama (Frameless) */
             background: transparent;
             border: none;
         }
 
-        /* --- BAGIAN GAMBAR (TRANSPARAN) --- */
+        /* --- BAGIAN GAMBAR --- */
         .card-image-wrapper {
             position: relative;
             width: 100%;
-            padding-top: 100%; /* Tetap rasio 1:1 */
-            margin-bottom: -15px; /* Sedikit overlap ke bawah agar menyatu */
-            z-index: 2; /* Gambar di atas kotak putih */
+            padding-top: 100%; 
+            margin-bottom: -15px; 
+            z-index: 2; 
         }
 
         .card-image {
@@ -81,26 +80,23 @@
             transform: translate(-50%, -50%);
             width: 100%; 
             height: 100%;
-            object-fit: contain; /* Menggunakan contain agar gambar terlihat utuh */
-            /* Efek drop shadow pada gambar produknya langsung */
+            object-fit: contain; 
             filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
             transition: transform 0.3s ease;
         }
 
-        /* Efek zoom dikit pas hover gambar */
         .product-card:hover .card-image {
             transform: translate(-50%, -50%) scale(1.05);
         }
 
-        /* --- BAGIAN KONTEN (KOTAK PUTIH) --- */
+        /* --- BAGIAN KONTEN (WARNA CERIA) --- */
         .card-content {
             background: var(--bg-card-content);
-            padding: 20px 10px 12px 10px; /* Padding atas lebih besar krn ketutup gambar dikit */
+            padding: 20px 10px 12px 10px; 
             border-radius: 12px;
             
-            /* Shadow halus & Border tipis hanya di bagian teks */
             box-shadow: var(--shadow-soft);
-            border: 1px solid #f0f0f0;
+            border: 1px solid var(--border-card);
             
             display: flex;
             flex-direction: column;
@@ -112,11 +108,11 @@
 
         .product-name {
             font-size: 0.85rem;
-            font-weight: 600;
-            color: #333;
+            font-weight: 700; /* Dibuat lebih tebal biar lebih playful */
+            color: #444;
             margin-bottom: 8px;
             line-height: 1.35;
-            height: 2.7em; /* Tinggi fix 2 baris */
+            height: 2.7em; 
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
@@ -129,7 +125,7 @@
 
         .original-price {
             font-size: 0.7rem;
-            color: #bbb;
+            color: #999;
             text-decoration: line-through;
             margin-right: 5px;
         }
@@ -137,10 +133,9 @@
         .discount-price {
             font-size: 0.95rem;
             color: var(--primary-color);
-            font-weight: 700;
+            font-weight: 800;
         }
 
-        /* Tambahan Style Rating agar muat di Grid */
         .rating {
             font-size: 0.7rem;
             color: #777;
@@ -148,7 +143,7 @@
         }
         .star { color: #fbbf24; }
 
-        /* --- TOMBOL (OUTLINE + GETER) --- */
+        /* --- TOMBOL (PLAYFUL BLUE) --- */
         .btn-minimal {
             display: block;
             width: 100%;
@@ -156,21 +151,20 @@
             text-align: center;
             text-decoration: none;
             font-size: 0.8rem;
-            font-weight: 600;
+            font-weight: 700;
             border-radius: 8px;
             transition: all 0.2s ease;
             
-            /* Style Outline Biru Navy */
-            background-color: transparent;
-            color: var(--primary-color);
-            border: 1px solid var(--primary-color);
-        }
-
-        /* Hover Effect: Warna Penuh + Animasi Geter */
-        .btn-minimal:hover, .btn-minimal:active {
+            /* Dibuat solid agar lebih menarik buat pasar anak/mama */
             background-color: var(--primary-color);
             color: white;
-            animation: geter 0.4s ease-in-out; /* Panggil animasi geter */
+            border: none;
+        }
+
+        .btn-minimal:hover, .btn-minimal:active {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+            animation: geter 0.4s ease-in-out; 
         }
 
     </style>
